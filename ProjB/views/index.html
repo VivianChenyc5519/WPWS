@@ -4,11 +4,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Project | three.js + p5.js</title>
+  <title>ThereIsNoFlyingCow</title>
 
   <link rel="stylesheet" href="css/style.css">
 
   <!-- import the supplementary libraries -->
+  <script src="/socket.io/socket.io.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/stats.js/16/Stats.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.9/dat.gui.min.js"></script>
 
@@ -36,6 +37,13 @@
     import { FirstPersonControls } from 'three/addons/controls/FirstPersonControls.js';
     import { PointerLockControls } from 'three/addons/controls/PointerLockControls.js';
     import { Sky } from 'three/addons/objects/Sky.js';
+    import { DragControls } from 'three/addons/controls/DragControls.js';
+    import { BoxLineGeometry } from "three/addons/geometries/BoxLineGeometry.js";
+    import { XRButton } from "three/addons/webxr/XRButton.js";
+    import { XRControllerModelFactory } from "three/addons/webxr/XRControllerModelFactory.js";
+    window.BoxLineGeometry = BoxLineGeometry;
+    window.XRButton = XRButton;
+    window.XRControllerModelFactory = XRControllerModelFactory;
     window.THREE = THREE;
     window.Sky = Sky;
     window.OrbitControls = OrbitControls;
@@ -45,12 +53,14 @@
     window.MapControls = MapControls;
     window.FirstPersonControls = FirstPersonControls;
     window.PointerLockControls = PointerLockControls;
+    window.DragControls = DragControls;
   </script>
 
   <!-- import your scripts here! -->
   <script defer src="js/script-three.js"></script>
   <script defer src="js/script-p5.js"></script>
   <script defer src="js/main.js"></script>
+  <script defer src="js/script-webxr.js"></script>
 </head>
 
 <body>

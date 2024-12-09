@@ -2,7 +2,6 @@ console.log("three.js Version: " + THREE.REVISION);
 
 let container, gui, stats;
 let scene, camera, renderer;
-let controls;
 let time, frame = 0;
 let moveForward = false;
 let moveBackward = false;
@@ -19,7 +18,6 @@ const clock = new THREE.Clock();
 
 function initThree() {
   scene = new THREE.Scene();
-  const listener = new THREE.AudioListener();
   const fov = 75;
   const aspectRatio = window.innerWidth / window.innerHeight;
   const near = 0.1;
@@ -28,7 +26,6 @@ function initThree() {
   camera.position.z = 30;
   camera.position.y = 35;
   camera.position.x = 50;
-  camera.add(listener);
 
   renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: 'high-performance' });
   renderer.shadowMap.enabled = true;
@@ -38,8 +35,7 @@ function initThree() {
   container = document.getElementById("container-three");
   container.appendChild(renderer.domElement);
 
-  //controls = new OrbitControls(camera, renderer.domElement);
-  //const controls = new DragControls( objects, camera, renderer.domElement );
+  // controls = new OrbitControls(camera, renderer.domElement);
   //controls = new MapControls(camera, renderer.domElement);
   //controls = new FirstPersonControls(camera, renderer.domElement);
   // First Person
@@ -58,11 +54,9 @@ function initThree() {
   //   BOTTOM: "KeyS" //
   // }
   // PointerLock
-  controls = new PointerLockControls(camera, renderer.domElement);
-  controls.pointerSpeed = 1;
+  // controls = new PointerLockControls(camera, renderer.domElement);
+  // scene.add( controls.object );
   
-  scene.add( controls.object );
-
   gui = new dat.GUI();
   raycaster = new THREE.Raycaster( new THREE.Vector3(), new THREE.Vector3( 0, - 1, 0 ), 0, 10 );
   stats = new Stats();
